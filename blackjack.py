@@ -173,14 +173,16 @@ class Dealer(Player):
 class Chips(object):
     def __init__(self):
         self.value = 200
+        self.bet_size = None
 
     def bet(self):
-        bet = raw_input("How much would you like to bet? ")
-        while bet.isdigit() == False:
+        self.bet_size = raw_input("How much would you like to bet? ")
+        while self.bet_size.isdigit() == False:
             print "Please enter a number."
-            bet = raw_input("How much would you like to bet? ")
-        self.value = self.value - int(bet)
-        game.pot = game.pot + int(bet)
+            self.bet_size = raw_input("How much would you like to bet? ")
+        self.value = self.value - int(self.bet_size)
+        game.pot = game.pot + int(self.bet_size)
+        return self.bet_size
         return self.value
         return game.pot
 
